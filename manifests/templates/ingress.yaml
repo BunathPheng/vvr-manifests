@@ -1,0 +1,21 @@
+---
+# Source: helm for kubernetes/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vvr                  # Ingress name
+  labels:
+    app: vvr
+spec:
+  ingressClassName: nginx   # Optional ingressClass
+  rules:
+    - host: "vvr.smartops.space"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: vvr               # Links to Service name dynamically
+                port:
+                  number: 8080  # Links to service port dynamically
