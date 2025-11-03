@@ -1,0 +1,24 @@
+---
+# Source: helm for kubernetes/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vvr
+  labels:
+    app: vvr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vvr
+  template:
+    metadata:
+      labels:
+        app: vvr
+    spec:
+      containers:
+        - name: vvr
+          image: docker.io/phengbunath/vvr:1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
